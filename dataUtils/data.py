@@ -33,7 +33,7 @@ class Data(object):
         with open(filename) as f:
             for i, line in enumerate(f):
                 if (i % 1000) == 0:
-                    bar.update(i % bar.maxval)
+                    bar.update(i % bar.max_value)
                 userid, itemid, rating = line.split()
                 self.update_user_item(userid, itemid)
                 uid = self.users[userid]
@@ -70,7 +70,7 @@ def loadTestData(d, testpath):
     with open(testpath) as fp:
         for i, line in enumerate(fp):
             if (i % 1000) == 0:
-                bar.update(i % bar.maxval)
+                bar.update(i % bar.max_value)
             user, item, rating = map(
                 lambda x: x.lower(), line.strip().split("\t"))
             if user in users and item in items:
